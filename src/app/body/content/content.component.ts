@@ -38,6 +38,7 @@ export class ContentComponent implements OnInit {
 		this.commonservice.getProducts().subscribe(data => {
 			this.apiData = data;
 			this.data = this.apiData.slice(this.count, this.limit);
+			this.limit = this.limit+5;
 	    });
 	}
 
