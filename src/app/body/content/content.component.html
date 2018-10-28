@@ -1,0 +1,29 @@
+  <div class="row">
+    {{searchTerm}}
+    <div class="col-6 col-lg-4" *ngFor="let data of apiData">
+      <div class="title">
+        <h2>{{data.title}}</h2>
+
+      </div>
+      <div class="img-display">
+      <img src="{{data.imageUrl}}">
+
+      </div>
+      <p>
+
+        <a class="btn btn-secondary" href="#" role="button" (click)="viewDetails(data);" data-toggle="modal" data-target="#details">View details &raquo;</a></p>
+    </div><!--/span-->
+  </div><!--/row-->
+
+  
+  <!-- The Modal -->
+  <div class="modal" id="details" [ngStyle]="{display: display}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <app-modal></app-modal>
+      </div>
+    </div>
+  </div>
+  
+
+

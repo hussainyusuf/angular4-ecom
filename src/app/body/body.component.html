@@ -1,0 +1,18 @@
+
+<div class="container">
+  	<div class="row row-offcanvas row-offcanvas-right">
+		<div class="col-12 col-md-9">
+			<form>
+			  <div class="form-group">
+			  </div>
+			    <input type="text" class="form-control" #box (keyup)="onSearch(box.value)" placeholder="Search Product" >
+			</form>
+			<app-content></app-content>
+		</div>
+		<div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+			<app-filter></app-filter>
+		</div>
+	</div>
+  	<hr>
+  	
+</div>

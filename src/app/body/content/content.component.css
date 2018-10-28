@@ -1,0 +1,22 @@
+div.title {
+    height: 100px;
+}
+h2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    line-height: 50px;
+    max-height: 100px;   
+}
+div.img-display {
+    margin: 0px 10px 10px 10px;
+    border: 1px solid;
+    height: 300px;
+}
+img {
+    max-height: 298px;
+    max-width: 200px;
+    overflow: hidden;
+}
