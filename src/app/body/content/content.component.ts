@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input, HostListener  } from '@angular/core';
 import { CommonserviceService } from './../../commonservice.service';
 @Component({
   selector: 'app-content',
@@ -8,7 +8,11 @@ import { CommonserviceService } from './../../commonservice.service';
 export class ContentComponent implements OnInit {
 	// @Input() searchTerm: String;
 	apiData: any = []; 
+	data: any = []; 
 	display = "none";
+	elements = [1];
+	count = 0;
+	limit = 5;
 	constructor(
 		private commonservice: CommonserviceService
 	) { }
@@ -16,10 +20,24 @@ export class ContentComponent implements OnInit {
 	ngOnInit() {
 		this.getAllData();		
 	}
+
+	@HostListener("window:scroll", [])
+	onScroll(): void {
+		if (this.bottomReached()) {
+			this.data = this.apiData.slice(this.count, this.limit);
+			this.limit = this.limit+5;
+		}
+	}
+
+	bottomReached(): boolean {
+		return (window.innerHeight + window.scrollY) >=      document.body.offsetHeight;
+	}
+
 	
 	getAllData(){
 		this.commonservice.getProducts().subscribe(data => {
-	    	this.apiData = data;
+			this.apiData = data;
+			this.data = this.apiData.slice(this.count, this.limit);
 	    });
 	}
 

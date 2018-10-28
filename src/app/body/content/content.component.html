@@ -1,6 +1,11 @@
   <div class="row">
     {{searchTerm}}
-    <div class="col-6 col-lg-4 items" *ngFor="let data of apiData">
+    <!-- <div class="top-counter"><h1>Count : [{{count}}]</h1></div> -->
+
+    <!-- <ng-container *ngFor=" let i of elements ">
+      <lorem-ipsum></lorem-ipsum>
+    </ng-container> -->
+    <div class="col-6 col-lg-4 items" *ngFor="let data of data">
       <div class="item-block">
         <div class="title">
           <h2>{{data.title}}</h2>
