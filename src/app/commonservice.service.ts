@@ -6,15 +6,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 
 export class CommonserviceService {
-    private products = new BehaviorSubject<any>();
-	  private product = new BehaviorSubject<any>();
+    private products = new BehaviorSubject<any>(null);
+	  private product = new BehaviorSubject<any>(null);
     allProducts = this.products.asObservable();
     currentProduct = this.product.asObservable();
 
-	private listProducts: [];
+	  private listProducts;
     private category: string;
     private query: string = '';
-	
+
   	constructor() {
       	this.listProducts = [
             {
