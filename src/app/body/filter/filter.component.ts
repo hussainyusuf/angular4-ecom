@@ -8,7 +8,7 @@ import { CommonserviceService } from './../../commonservice.service';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-
+  category = 0;
   constructor(
 		private service: CommonserviceService
   	) { }
@@ -17,6 +17,7 @@ export class FilterComponent implements OnInit {
   }
 
   filterByCategory(val){
+    this.category = val;
   	this.service.filterCategory(val);
   }
 

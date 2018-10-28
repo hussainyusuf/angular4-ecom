@@ -1,6 +1,6 @@
 <div class="list-group">
-      <a href="#" class="list-group-item" (click)="filterByCategory('')">All Categories</a>
-      <a href="#" class="list-group-item" (click)="filterByCategory(1)">Category 1</a>
-      <a href="#" class="list-group-item" (click)="filterByCategory(2)">Category 2</a>
-      <a href="#" class="list-group-item" (click)="filterByCategory(3)">Category 3</a>
+      <a href="#" class="list-group-item" [ngClass]="{'active': category==0}" (click)="filterByCategory('')">All Categories</a>
+      <a href="#" class="list-group-item" [ngClass]="{'active': category==1}" (click)="filterByCategory(1)">Category 1</a>
+      <a href="#" class="list-group-item" [ngClass]="{'active': category==2}" (click)="filterByCategory(2)">Category 2</a>
+      <a href="#" class="list-group-item" [ngClass]="{'active': category==3}" (click)="filterByCategory(3)">Category 3</a>
 </div>
