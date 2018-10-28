@@ -12,7 +12,7 @@ export class CommonserviceService {
     currentProduct = this.product.asObservable();
 
 	  private listProducts;
-    private category: string;
+    private category: string = '';
     private query: string = '';
 
   	constructor() {
@@ -314,26 +314,26 @@ export class CommonserviceService {
     }
 
   	filter(query: string): void {
-          this.query = query;
+        this.query = query;
         let filterList = [];
-  		if(query==='' && this.category === ''){
-  			this.products.next(this.listProducts);
-  		}else if(query === '' && this.category != ''){
-            this.listProducts.forEach(element => {
-                if(element.category.startsWith(this.category)){
-                    filterList.push(element);
-                }
-            });
-            this.products.next(filterList);
+        if(query==='' && this.category === ''){
+          this.products.next(this.listProducts);
+        }else if(query === '' && this.category != ''){
+              this.listProducts.forEach(element => {
+                  if(element.category.startsWith(this.category)){
+                      filterList.push(element);
+                  }
+              });
+              this.products.next(filterList);
+            }
+            else if (query != '' && this.category === ''){
+        this.listProducts.forEach(element => {
+          if(element.title.startsWith(query)){
+            filterList.push(element);
           }
-          else if (query != '' && this.category === ''){
-			this.listProducts.forEach(element => {
-				if(element.title.startsWith(query)){
-					filterList.push(element);
-				}
-			});
-            this.products.next(filterList);
-    	}
+        });
+              this.products.next(filterList);
+        }
         else if (query != '' && this.category != ''){
             this.listProducts.forEach(element => {
                 if(element.title.startsWith(query)&&element.category.startsWith(this.category)){
