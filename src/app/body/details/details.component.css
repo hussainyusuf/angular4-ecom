@@ -20,10 +20,17 @@ h2{
 div.img-display {
     margin: 0px 10px 10px 10px;
     border: 1px solid;
-    height: 200px;
+    height: 300px;
 }
 img {
-    max-height: 198px;
-    max-width: 200px;
+    padding: 10px;
+    max-height: 298px;
+    max-width: 400px;
     overflow: hidden;
+}
+p.new-price{
+    color:green;
+}
+p.old-price{
+    color: red;
 }

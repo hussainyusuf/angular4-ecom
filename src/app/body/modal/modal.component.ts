@@ -9,30 +9,23 @@ import { ContentComponent } from './../content/content.component';
 })
 export class ModalComponent implements OnInit {
   product: any = [];
-	display = "none";
-  
+  display = 'none';
   constructor(
-		private commonservice: CommonserviceService,
-		private contentcomponent: ContentComponent,
-  	) { }
+    private commonservice: CommonserviceService,
+    private contentcomponent: ContentComponent,
+  ) { }
 
   ngOnInit() {
-  	this.getCurrentProduct();
+    this.getCurrentProduct();
   }
 
   getCurrentProduct() {
-  	this.commonservice.getProduct().subscribe(data => {
+    this.commonservice.getProduct().subscribe(data => {
       this.product = data;
-      if(this.product!==undefined){
-        console.log("modal current product....",this.product);
-
-      }
     });
   }
 
-	closeModal(){
-		this.contentcomponent.display = "none";
-	}
-
-
+  closeModal() {
+    this.contentcomponent.display = 'none';
+  }
 }

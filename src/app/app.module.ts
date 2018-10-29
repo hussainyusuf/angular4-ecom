@@ -14,11 +14,13 @@ import { ModalComponent } from './body/modal/modal.component';
 
 import { CommonserviceService } from './commonservice.service';
 import { DetailsComponent } from './body/details/details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full'},
-  { path: 'products', component: BodyComponent },
-  { path: 'products/details/:id', component: DetailsComponent }
+  { path: 'products', component: ContentComponent },
+  { path: 'products/details/:id', component: DetailsComponent },
+  { path: '**', component: PageNotFoundComponent}
 ];
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ const routes: Routes = [
     ContentComponent,
     FilterComponent,
     ModalComponent,
-    DetailsComponent
+    DetailsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

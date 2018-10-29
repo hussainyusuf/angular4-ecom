@@ -7,18 +7,17 @@ import { CommonserviceService } from './../commonservice.service';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-	searchTerm: string;
-	testString: string;
-	constructor(
-		private service: CommonserviceService
-		) { 
-	}
+searchTerm: string;
+constructor(
+private service: CommonserviceService
+) {
 
-	ngOnInit() {
-		this.testString = "Test data";
-	}
+}
 
-	public onSearch(searchTerm: string): void {
-		this.service.filter(searchTerm);
-	}
+ngOnInit() {
+}
+
+public onSearch(searchTerm: string): void {
+this.service.filter(searchTerm);
+}
 }

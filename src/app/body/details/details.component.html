@@ -1,0 +1,23 @@
+
+<br/>
+<p><button class="btn btn-desabled" role="button" routerLink="/products">Back</button></p>
+  
+<div class="item-block">
+  <div class="title">
+    <h2>{{product.title}}</h2>
+
+  </div>
+  <div class="img-display">
+    <img src="{{product.imageUrl}}">
+  </div>
+  <p class="new-price">Price: {{product.itemPrice}} AED</p>
+  <p class="old-price" *ngIf="product.itemOldPrice != null">Old Price: {{product.itemOldPrice}}</p>
+  <p></p>
+  <hr />
+  <p>
+    <button class="btn btn-secondary" role="button" >Add to Cart &raquo;</button> 
+  </p>
+  <p>
+    <button class="btn btn-info" role="button" >Buy &raquo;</button>
+  </p>
+</div>
