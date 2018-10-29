@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,13 @@ import { FilterComponent } from './body/filter/filter.component';
 import { ModalComponent } from './body/modal/modal.component';
 
 import { CommonserviceService } from './commonservice.service';
+import { DetailsComponent } from './body/details/details.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'products', pathMatch: 'full'},
+  { path: 'products', component: BodyComponent },
+  { path: 'products/details/:id', component: DetailsComponent }
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,13 +28,15 @@ import { CommonserviceService } from './commonservice.service';
     FooterComponent,
     ContentComponent,
     FilterComponent,
-    ModalComponent
+    ModalComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot(routes)
   ],
   providers: [CommonserviceService],
   bootstrap: [AppComponent]

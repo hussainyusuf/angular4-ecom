@@ -9,16 +9,15 @@ import { CommonserviceService } from './../../commonservice.service';
 })
 export class FilterComponent implements OnInit {
   category = 0;
-  constructor(
-		private service: CommonserviceService
-  	) { }
+  constructor(private service: CommonserviceService
+  ) { }
 
   ngOnInit() {
   }
 
-  filterByCategory(val){
-    this.category = val;
-  	this.service.filterCategory(val);
+  filterByCategory(val) {
+  this.category = val;
+  this.service.filterCategory(val);
   }
 
 }

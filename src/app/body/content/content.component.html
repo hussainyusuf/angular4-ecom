@@ -1,10 +1,4 @@
   <div class="row">
-    {{searchTerm}}
-    <!-- <div class="top-counter"><h1>Count : [{{count}}]</h1></div> -->
-
-    <!-- <ng-container *ngFor=" let i of elements ">
-      <lorem-ipsum></lorem-ipsum>
-    </ng-container> -->
     <div class="col-6 col-lg-4 items" *ngFor="let data of data">
       <div class="item-block">
         <div class="title">
@@ -16,14 +10,14 @@
 
         </div>
         <p>
-
-          <a class="btn btn-secondary" href="#" role="button" (click)="viewDetails(data);" data-toggle="modal" data-target="#details">View details &raquo;</a></p>
-      </div><!--/span-->
+          <button class="btn btn-secondary" role="button" (click)="viewDetails(data);" data-toggle="modal" data-target="#details">View &raquo;</button> </p>
+          <p>
+            <button class="btn btn-info" role="button" (click)="viewDetailedPage(data.id);" >View details &raquo;</button>
+        </p>
+      </div>
     </div>
-  </div><!--/row-->
-
+  </div>
   
-  <!-- The Modal -->
   <div class="modal" id="details" [ngStyle]="{display: display}">
     <div class="modal-dialog">
         <div class="modal-content">

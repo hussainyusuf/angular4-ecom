@@ -7,16 +7,17 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 export class CommonserviceService {
     private products = new BehaviorSubject<any>(null);
-	  private product = new BehaviorSubject<any>(null);
+    private product = new BehaviorSubject<any>(null);
     allProducts = this.products.asObservable();
     currentProduct = this.product.asObservable();
+    productDetails = [];
 
-	  private listProducts;
-    private category: string = '';
-    private query: string = '';
+    private listProducts;
+    private category: string;
+    private query: string;
 
-  	constructor() {
-      	this.listProducts = [
+    constructor() {
+        this.listProducts = [
             {
             "title": "SanDisk Ultra microSDXC UHS-I 80 MB/s Card with Adapter 64GB - SDSQUNS-064G-GN3MA",
             "ean": "2724285854797",
@@ -305,48 +306,46 @@ export class CommonserviceService {
         ];
 
         this.products.next(this.listProducts);
-  	}
+    }
 
-
-    filterCategory(category: string){
+    filterCategory(category: string) {
         this.category = category;
         this.filter(this.query);
     }
 
-  	filter(query: string): void {
+    filter(query: string): void {
         this.query = query;
-        let filterList = [];
-        if(query==='' && this.category === ''){
+        const filterList = [];
+        if (query === undefined && this.category === undefined) {
           this.products.next(this.listProducts);
-        }else if(query === '' && this.category != ''){
-              this.listProducts.forEach(element => {
-                  if(element.category.startsWith(this.category)){
-                      filterList.push(element);
-                  }
-              });
-              this.products.next(filterList);
+        } else if (query === undefined && this.category !== undefined) {
+          this.listProducts.forEach(element => {
+            if (element.category.startsWith(this.category)) {
+              filterList.push(element);
             }
-            else if (query != '' && this.category === ''){
-        this.listProducts.forEach(element => {
-          if(element.title.startsWith(query)){
-            filterList.push(element);
-          }
-        });
-              this.products.next(filterList);
+          });
+          this.products.next(filterList);
+        } else if (query !== undefined && this.category === undefined) {
+          console.log(query);
+          this.listProducts.forEach(element => {
+            if (element.title.startsWith(query)) {
+              filterList.push(element);
+            }
+          });
+          this.products.next(filterList);
+        } else if (query !== undefined && this.category !== undefined) {
+          this.listProducts.forEach(element => {
+            if (element.title.startsWith(query) && element.category.startsWith(this.category)) {
+                filterList.push(element);
+            }
+          });
+          this.products.next(filterList);
         }
-        else if (query != '' && this.category != ''){
-            this.listProducts.forEach(element => {
-                if(element.title.startsWith(query)&&element.category.startsWith(this.category)){
-                    filterList.push(element);
-                }
-            });
-            this.products.next(filterList);
-        }
-  	}
+    }
 
-  	getProducts(): Observable<[]> {
-    	return this.allProducts;
-   	}
+    getProducts(): Observable<[]> {
+      return this.allProducts;
+    }
 
     changeCurrentProduct(data: any): void {
         this.product.next(data);
@@ -356,5 +355,12 @@ export class CommonserviceService {
         return this.currentProduct;
     }
 
-
+    getProductDetails (id: Number): Array<any> {
+      this.listProducts.forEach(element => {
+        if (element.id === id) {
+          this.productDetails = element;
+        }
+      });
+      return this.productDetails;
+    }
 }
